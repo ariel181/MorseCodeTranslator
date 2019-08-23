@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    translatorcontroller.cpp \
+    translatormodel.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    translatorcontroller.h \
+    translatormodel.h
 
 FORMS    += mainwindow.ui
