@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QDebug>
+#include <QMessageBox>
 
 TranslatorController::TranslatorController(QObject *parent) : QObject(parent)
   ,_ui(new MainWindow())
@@ -10,8 +11,6 @@ TranslatorController::TranslatorController(QObject *parent) : QObject(parent)
     qDebug()<<"Start aplication";
 
     _ui->setController(this);
-
-    openFile();
 }
 
 void TranslatorController::show()
@@ -41,26 +40,48 @@ void TranslatorController::closeApp()
 
 }
 
+void TranslatorController::saveFile(const QString content,const QString title)
+{
+    QString fileName = QFileDialog::getSaveFileName(_ui,
+                                                    title, "",
+                                                    tr("*.txt"));
+
+    if (fileName.isEmpty())   return;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly)) {
+        QMessageBox::information(_ui, tr("Unable to open file"),
+                                 file.errorString());
+        return;
+    }
+
+    QTextStream out(&file);
+    out << content;
+
+    file.close();
+}
+
 QString TranslatorController::openFile()
 {
 
     QString fileName = QFileDialog::getOpenFileName(_ui,
-           tr("Open File"),QString(""),tr(" *.txt (*.txt)"));
+                                                    tr("Open File"),QString(""),tr(" *.txt (*.txt)"));
 
-//    QString fileName = "./text.txt";
+    QString pom("");
+    if(fileName.isEmpty()) return pom;
 
     qDebug()<<"File name:"<<fileName;
-    QString pom("");
 
     QFile file(fileName);
-    file.open(QFile::ReadOnly | QFile::Text);
-
-    if(file.isOpen()) {
-        QTextStream strem(&file);
-        pom = strem.readAll();
+    if(!file.open(QFile::ReadOnly | QFile::Text)) {
+        QMessageBox::information(_ui, tr("Unable to open file"),
+                                 file.errorString());
+        return pom;
     }
 
-    qDebug()<<"file text:"<<pom;
+    QTextStream strem(&file);
+    pom = strem.readAll();
+    file.close();
 
     return pom;
 }

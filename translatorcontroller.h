@@ -17,6 +17,7 @@ public slots:
     void openText();
     void openMors();
     void closeApp();
+    void saveFile(const QString content, const QString title);
 
 private:
     QString openFile();

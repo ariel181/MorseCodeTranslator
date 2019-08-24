@@ -21,10 +21,14 @@ public:
     void loadMors(const QString text);
 
 signals:
-    void NotifySaveText(const QString);
-    void NotifySaveMors(const QString);
+    void NotifySaveText(const QString,const QString);
     void NotifyTransText(const QString);
     void NotifyTransMors(const QString);
+
+private slots:
+    void on_actionSave_Text_triggered();
+
+    void on_actionSave_Mors_triggered();
 
 private:
     Ui::MainWindow *ui;
