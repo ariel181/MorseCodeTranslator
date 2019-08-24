@@ -16,8 +16,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::setController(TranslatorController *con)
 {
-   connect(ui->actionLoad_Text,&QAction::trigger,con,&TranslatorController::openText);
-   connect(ui->actionLoad_Mors,&QAction::trigger,con,&TranslatorController::openMors);
+   connect(ui->actionLoad_Text,&QAction::triggered,con,&TranslatorController::openText);
+   connect(ui->actionLoad_Mors,&QAction::triggered,con,&TranslatorController::openMors);
 
 }
 
