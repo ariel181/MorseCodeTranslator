@@ -27,7 +27,6 @@ signals:
 
 private slots:
     void on_actionSave_Text_triggered();
-
     void on_actionSave_Mors_triggered();
 
 private:

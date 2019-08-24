@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+   connect(ui->actionClear_Mors,&QAction::triggered,ui->pTMors,&QPlainTextEdit::clear);
+   connect(ui->actionClear_Text,&QAction::triggered,ui->pTText,&QPlainTextEdit::clear);
 }
 
 MainWindow::~MainWindow()

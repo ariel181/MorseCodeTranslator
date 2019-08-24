@@ -94,6 +94,8 @@
     <addaction name="actionSave_Text"/>
     <addaction name="actionSave_Mors"/>
     <addaction name="actionExit"/>
+    <addaction name="actionClear_Mors"/>
+    <addaction name="actionClear_Text"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -133,6 +135,16 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionClear_Mors">
+   <property name="text">
+    <string>Clear Mors</string>
+   </property>
+  </action>
+  <action name="actionClear_Text">
+   <property name="text">
+    <string>Clear Text</string>
    </property>
   </action>
  </widget>
