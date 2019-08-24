@@ -29,6 +29,10 @@ private slots:
     void on_actionSave_Text_triggered();
     void on_actionSave_Mors_triggered();
 
+    void on_pbToMors_clicked();
+
+    void on_pbToText_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

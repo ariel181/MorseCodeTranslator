@@ -56,3 +56,21 @@ void MainWindow::on_actionSave_Mors_triggered()
     emit NotifySaveText(text,tr("Save Mors"));
 
 }
+
+void MainWindow::on_pbToMors_clicked()
+{
+
+    const QString text = ui->pTText->toPlainText();
+    if(text.isEmpty()) return;
+    emit NotifyTransMors(text);
+
+}
+
+void MainWindow::on_pbToText_clicked()
+{
+
+    const QString text = ui->pTMors->toPlainText();
+    if(text.isEmpty()) return;
+    emit NotifyTransText(text);
+
+}

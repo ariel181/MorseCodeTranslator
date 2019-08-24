@@ -7,6 +7,7 @@
 
 TranslatorController::TranslatorController(QObject *parent) : QObject(parent)
   ,_ui(new MainWindow())
+  ,_model(new TranslatorModel(this))
 {
     qDebug()<<"Start aplication";
 
@@ -59,6 +60,16 @@ void TranslatorController::saveFile(const QString content,const QString title)
     out << content;
 
     file.close();
+}
+
+void TranslatorController::transMorsToText(const QString content)
+{
+    const QString text =  _model->convertToText(content);
+}
+
+void TranslatorController::transTextToMors(const QString content)
+{
+    const QString text =  _model->convertToMors(content);
 }
 
 QString TranslatorController::openFile()

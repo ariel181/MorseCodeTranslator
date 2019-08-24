@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "mainwindow.h"
+#include "translatormodel.h"
 
 class TranslatorController : public QObject
 {
@@ -18,12 +19,15 @@ public slots:
     void openMors();
     void closeApp();
     void saveFile(const QString content, const QString title);
+    void transMorsToText(const QString content);
+    void transTextToMors(const QString content);
 
 private:
     QString openFile();
     bool isMors(QString);
 
     MainWindow* _ui;
+    TranslatorModel* _model;
 };
 
 #endif // TRANSLATORCONTROLLER_H
