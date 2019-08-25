@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "translatorcontroller.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,6 +22,8 @@ void MainWindow::setController(TranslatorController *con)
 {
    connect(ui->actionLoad_Text,&QAction::triggered,con,&TranslatorController::openText);
    connect(ui->actionLoad_Mors,&QAction::triggered,con,&TranslatorController::openMors);
+   connect(this,&MainWindow::NotifyTextToMars,con,&TranslatorController::transTextToMors);
+   connect(this,&MainWindow::NotifyMorsToText,con,&TranslatorController::transMorsToText);
 
    connect(this,&MainWindow::NotifySaveText,
            con,&TranslatorController::saveFile);
@@ -61,8 +64,9 @@ void MainWindow::on_pbToMors_clicked()
 {
 
     const QString text = ui->pTText->toPlainText();
+    qDebug()<<text;
     if(text.isEmpty()) return;
-    emit NotifyTransMors(text);
+    emit NotifyTextToMars(text);
 
 }
 
@@ -70,7 +74,13 @@ void MainWindow::on_pbToText_clicked()
 {
 
     const QString text = ui->pTMors->toPlainText();
+    qDebug()<<text;
     if(text.isEmpty()) return;
-    emit NotifyTransText(text);
+    emit NotifyMorsToText(text);
+
+}
+
+void MainWindow::init()
+{
 
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMap>
 
 namespace Ui {
 class MainWindow;
@@ -22,8 +23,8 @@ public:
 
 signals:
     void NotifySaveText(const QString,const QString);
-    void NotifyTransText(const QString);
-    void NotifyTransMors(const QString);
+    void NotifyMorsToText(const QString);
+    void NotifyTextToMars(const QString);
 
 private slots:
     void on_actionSave_Text_triggered();
@@ -34,7 +35,10 @@ private slots:
     void on_pbToText_clicked();
 
 private:
+    void init();
+
     Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H

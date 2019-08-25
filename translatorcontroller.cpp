@@ -65,11 +65,15 @@ void TranslatorController::saveFile(const QString content,const QString title)
 void TranslatorController::transMorsToText(const QString content)
 {
     const QString text =  _model->convertToText(content);
+    if(text.isEmpty()) return;
+    _ui->loadText(text);
 }
 
 void TranslatorController::transTextToMors(const QString content)
 {
     const QString text =  _model->convertToMors(content);
+    if(text.isEmpty()) return;
+    _ui->loadMors(text);
 }
 
 QString TranslatorController::openFile()
