@@ -36,11 +36,6 @@ void TranslatorController::openMors()
 
 }
 
-void TranslatorController::closeApp()
-{
-
-}
-
 void TranslatorController::saveFile(const QString content,const QString title)
 {
     QString fileName = QFileDialog::getSaveFileName(_ui,

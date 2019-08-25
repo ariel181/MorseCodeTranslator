@@ -22,3 +22,6 @@ HEADERS  += mainwindow.h \
     translatormodel.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    rc.qrc
