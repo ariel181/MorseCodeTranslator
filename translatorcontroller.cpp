@@ -44,7 +44,11 @@ void TranslatorController::saveFile(const QString content,const QString title)
 
     if (fileName.isEmpty())   return;
 
+    QFileInfo fileInfo(fileName);
+    if(fileInfo.suffix().isEmpty()) fileName +=".txt";
+
     QFile file(fileName);
+
     if (!file.open(QIODevice::WriteOnly)) {
         QMessageBox::information(_ui, tr("Unable to open file"),
                                  file.errorString());
