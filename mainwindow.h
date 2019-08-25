@@ -11,7 +11,9 @@ class MainWindow;
 class TranslatorController;
 
 /**
- * @brief
+ * @brief The main window of MorsCodeTranslator.
+ *
+ * The main window will show up after the application started.
  *
  */
 class MainWindow : public QMainWindow
@@ -31,19 +33,19 @@ public:
      */
     ~MainWindow();
     /**
-     * @brief
+     * @brief The method spins assigned signals with a view.
      *
      * @param con
      */
     void setController(TranslatorController* con);
     /**
-     * @brief
+     * @brief The method transfers the text from the file or after translation into text.
      *
      * @param text
      */
     void loadText(const QString text);
     /**
-     * @brief
+     * @brief The method transfers the text from the file or after translation into mors.
      *
      * @param text
      */
@@ -51,20 +53,20 @@ public:
 
 signals:
     /**
-     * @brief
+     * @brief Emitted when the user wants to save the text. The method is called when saving text and mors.
      *
-     * @param QString
-     * @param QString
+     * @param QString Text to write.
+     * @param QString Title window name.
      */
     void NotifySaveText(const QString,const QString);
     /**
-     * @brief
+     * @brief Emitted when there is a need to convert to Text
      *
      * @param QString
      */
     void NotifyMorsToText(const QString);
     /**
-     * @brief
+     * @brief Emitted when there is a need to convert to Mors
      *
      * @param QString
      */
